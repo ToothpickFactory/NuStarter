@@ -1,0 +1,8 @@
+{
+  package: {
+    title: "NuSkin Fountian",
+    name: "nuskin-fountain",
+    version: "1.0",
+    description: "Nuskin's Style Framework"
+  }
+}

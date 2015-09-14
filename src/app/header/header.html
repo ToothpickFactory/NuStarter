@@ -1,0 +1,32 @@
+<div class="banner" navsize>
+	<div class="userNavigation">
+		<span class="userNavigationName">John Doe</span>
+	</div>
+
+	<div class="banner-main">
+		<i class="zmdi zmdi-hc-lg zmdi-menu bars action"></i>
+		<i class="icon nslogo"></i>
+		<h1 class="banner-main breadcrumbs">
+			<span id="app-title">Starter Kit</span>
+			<i class="zmdi zmdi-chevron-right chevron"></i>
+			<span id="page-title">Page Title</span>
+		</h1>
+
+		<span class="personalLinks">
+			<a>
+				<i class="action md-light icons8-User-Male account-icon" coming-soon-tip="txc.comingSoon"></i>
+			</a>
+		</span>
+	</div>
+
+	<nav ng-init="activeTab = 'State1'">
+		<a ui-sref="state1"
+		   ng-class="{active : activeTab === 'State1'}"
+		   ng-click="activeTab = 'State1'"
+		   class="btn">State1</a>
+		 <a ui-sref="state2"
+ 		   ng-class="{active : activeTab === 'State2'}"
+ 		   ng-click="activeTab = 'State2'"
+ 		   class="btn">State2</a>
+	</nav>
+</div>

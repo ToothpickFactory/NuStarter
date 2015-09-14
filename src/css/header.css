@@ -1,0 +1,213 @@
+/***************************
+* VG Header
+***************************/
+.banner a,
+.banner h {
+  opacity:0.94;
+	font-family: "Roboto", sans-serif;
+}
+
+.ns-atomic .banner nav a {
+  color: rgba(255, 255, 255, 0.40);
+}
+
+h1.banner-main span {
+  display:inline-block;
+}
+
+h1.banner-main #page-title {
+  position: relative;
+  top: -9px;
+}
+
+h1.banner-main #app-title,
+h1.banner-main #app-title-abbr {
+  overflow:hidden;
+  transition:all 1.5s;
+  white-space:nowrap;
+  position:relative;
+  top: -2px;
+}
+
+h1.banner-main #app-title {
+  width:340px;
+  opacity:1;
+}
+h1.banner-main #app-title-abbr {
+  width:0;
+  opacity:0;
+}
+
+h1.banner-main.show-abbreviated #app-title {
+  width:0;
+  opacity:0;
+}
+h1.banner-main.show-abbreviated #app-title-abbr {
+  width:60px;
+  opacity:1;
+}
+
+
+
+
+.banner-main {
+	height: 35px;
+	margin: 15px 25px 3px 25px;
+	max-width: 1300px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+.banner-main .bars{
+	font-size: 25px;
+	color: white;
+	line-height:1;
+	height: 35px;
+	vertical-align: top;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.banner-main .nslogo{
+	  height: 35px;
+	  width: 35px;
+		margin-right: 1em;
+		margin-left: 1em;
+	  display: inline-block;
+}
+
+.banner-main .breadcrumbs{
+	display: inline-block;
+	line-height: 35px;
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+	font-size: 30px;
+	color: white;
+}
+
+.banner-main .breadcrumbs .chevron{
+  position: relative;
+  top: -0.15em;
+  font-size: 1.25em;
+}
+
+.banner-main h1 {
+	margin:0!important;
+}
+
+.personalLinks{
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.personalLinks i {
+	height: 25px;
+	display: inline-block;
+	vertical-align: top;
+  font-size: 25px;
+	color: white;
+}
+
+.personalLinks > a,
+.personalLinks > i {
+    display:inline-block;
+    margin:0;
+    margin-left:10px;
+    margin-right:10px;
+    position:relative;
+}
+
+.ns-atomic .personalLinks .fa,
+.ns-atomic .personalLinks .zmdi {
+  padding:0;
+}
+
+.personalLinks .zmdi-account {
+  margin-left:15px;
+  margin-top:2px;
+}
+
+.personalLinks .account-icon,
+.personalLinks .logout-icon {
+  position: relative;
+  top: -5px;
+}
+
+.personalLinks i {
+    font-size:30px!important;
+}
+
+.userNavigation {
+  background-color: rgb(14, 100, 126);
+  color: white;
+  padding: 0 20px;
+  font-size: 12px;
+	height:20px;
+}
+
+.banner.muted .userNavigation {
+  background-color:#4E6E77;
+}
+
+.userNavigation > * {
+    padding:0;
+}
+
+.userNavigation .periodSelect {
+	color:white;
+	height: 10px;
+	min-height:20px;
+	border-radius:0;
+	font-size:11px;
+}
+
+.userNavigationName {
+  font-size: 11px;
+  margin-right: 20px;
+}
+
+.banner nav {
+	margin: 0 auto;
+	max-width: 1200px;
+	padding-left:65px;
+	margin-top:10px;
+}
+
+.banner nav a {
+	font-size:11px;
+	margin-right:10px;
+  display:inline-block!important;
+}
+
+.banner .personalLinks a {
+	text-decoration: none!important;
+  outline: none;
+}
+
+.userMode{
+  padding: 3px 0; color:#ff0043;
+}
+
+.trainingMode{
+  padding: 3px 20px;
+  cursor: pointer;
+}
+
+.training-mode-div{
+  margin-bottom:25px;
+}
+
+.accountManager{
+  padding: 3px 0 0 10px;
+  cursor: pointer;
+}
+
+.amImage {
+	max-width: 150px !important;
+	max-height: 150px !important;
+}

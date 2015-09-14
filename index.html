@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="vg">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="./src/css/header.css">
+		<link rel="stylesheet" href="./src/vendor/css/global.css" />
+		<link rel="stylesheet" href="./src/vendor/css/arctic-table.css" />
+
+
+		<script src="//code.angularjs.org/1.4.5/angular.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+
+		<!-- inject:js -->
+		<script src="dist/scripts.js"></script>
+		<script src="dist/templates.js"></script>
+		<!-- endinject -->
+	</head>
+	<body class="ns-atomic grid">
+		<vg-header></vg-header>
+		<ui-view ng-style="bannerHeight" class="ngView"></ui-view>
+	</body>
+</html>

@@ -1,0 +1,1 @@
+sassdoc ../ --config config.json

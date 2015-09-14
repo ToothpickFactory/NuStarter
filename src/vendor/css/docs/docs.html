@@ -1,0 +1,714 @@
+<html>
+
+<head>
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../global.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script>hljs.initHighlightingOnLoad();</script>
+  <title>NS-Atomic</title>
+</head>
+
+<body class="ns-atomic ">
+  <header class="banner">
+    <div class="brand-icon"></div>
+    <div class="content">
+      <h1>NS-Atomic</h1>
+    </div>
+  </header>
+  <!-- <div id="sidebar">
+    <h1>NS-Atomic
+      <span style="font-size:0.5em;">0.8</span>
+    </h1>
+    <nav>
+      <a href="#overview">Overview</a>
+      <a href="#conventions">Conventions</a>
+      <a href="#typography">Typography</a>
+      <a href="#buttons">Buttons</a>
+      <a href="#forms">Forms</a>
+      <a href="#layout">Layout</a>
+      <a href="#customization">Customization</a>
+    </nav>
+
+  </div> -->
+  <!-- <header class="banner">
+    <h1>Header</h1>
+    <nav>
+      <button>Some link</button>
+      <button class="active">Link 2</button>
+      <button>Link 3</button>
+    </nav>
+  </header> -->
+  <div id="main-content" class="main-container banner-offset">
+    <section>
+      <h2><a name="overview">Overview</a></h2>
+      <p><i class="icons8-about"></i>
+        NS-Atomic is a centralized framework and guide that defines the common styles and conventions shared across NuSkin's web products. This page provides a brief overview of what is available, but you should review the actual stylesheets to see everything.
+      </p>
+      <article>
+        <h3>Atomic Design</h3>
+        <p>
+          NS-Atomic is partially based on Brad Frost's <a href="http://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</a> principles. Namely it is based on the idea that instead of solely designing a page and trying to figure out how to style the page to fit elements together, we instead build and design components which are reactive and put them together to build pages. If you are unfamiliar with the concept, you should take some time to read up on it.
+        </p>
+      </article>
+      <article>
+        <h3>Features</h3>
+        <p>
+          Most, if not all, components are reactive and adaptive, meaning that they will respond to the size of screen. Many components will also change behavior based on surrounding elements. This is not an exhaustive list of features, but lists some of the key things available:
+        </p>
+        <ul>
+          <li>Standardized colors and layers</li>
+          <li>Typography</li>
+          <li>Button Styling and states</li>
+          <li>Sizing and layout shortcuts</li>
+          <li>Compound elements</li>
+          <li>Dropdowns and inputs</li>
+          <li>Shadows</li>
+          <li>Zurb Grid</li>
+          <li>Modals (fully responsive!)</li>
+        </ul>
+        <p>
+          This page is currently static, so anything added after March 31, 2015 won't show up automatically. This page will be made dynamic later on.
+        </p>
+      </article>
+      <article>
+        <h3>Getting Started</h3>
+        <p>
+          NS-Atomic should have a stylesheet ready-built sitting under <b>global.css</b>. Simply include this file in your project, and you'll have the styles ready to go. NOTICE: This process may change soon.
+        </p>
+        <p>
+          If you need to use a different brand color, or need make other changes to the atomic styles, you will need to create your a new folder under sites. For instance: <b>sites/my-app</b>. It is recommended that you copy the nuskin site folder as a base and then make changes from there.
+        </p>
+      </article>
+    </section>
+    <section>
+      <h2><a name="conventions">Conventions</a></h2>
+      <article>
+        <h3>Semantic Vocabulary</h3>
+        <p>
+          NS-Atomic follows a very modular pattern for its styling, offering a lot of rules and styles that you can "mix-and-match". The goal is to provide the markup developer with a powerful "vocabulary" which they can use to describe how the elements should look and behave while minimizing the amount of work that needs to be done. The Semantic vocabulary is the use of classes, ids, attributes, and tag names in order to make descriptiv and impactful markup.
+        </p>
+        <p>
+          Whenever it makes sense, use naming and conventions which reflect usage and application, even if it means simple assigning another variable to it. Consider the following example:
+          <code><pre class="sass">
+            $color-error: 				   #C71013;
+            $color-warning: 			           $color-error;
+            $color-delete: 				   $color-error;
+          </pre></code>
+          <p>
+          Currently we use the same color for warning and delete, but we still define them separately so instead of just using "$color-red" or "$color-red-dark", which only have meaning implicitly, we define what the color is actually used for.
+        </p>
+        <p>
+          When creating new markup and styling, consider whether or not sensible vocabulary could be made to describe what you are doing.
+        </p>
+        </p>
+      </article>
+      <article>
+        <h3>Markup</h3>
+        <p>
+          Whenever possible, you should opt to use existing vocubalary with, or instead of, new vocabulary. For example, If you are making a component which will only ever consist of a single button and input field, there's no need to create a new class for each of those. Simply create a class or id for the parent and reference the child elements by tag name.
+
+          <code><pre class="sass">
+            .input-with-button {
+              input { ... }
+              button { ... }
+            }
+          </pre></code>
+        </p>
+        <p>
+          Consider the situation where you might want a particular element to have larger text. Do all elements of this kind need to have larger text, or just this one instance? Rather than creating custom sizing for that one element, use
+        </p>
+        <p>
+          Never sacrifice understandable code in favor of terseness. If vocubulary or rules do not have strongly imply the relationship of parts, make sure the naming conventions are specific enough to ensure they are. Consider the following example:
+          <code><pre class="sass">
+            .modal {
+              &> div:first-child { ... }
+              &> div:nth-child(2) { ... }
+              &> div:last-child { ... }
+            }
+          </pre></code>
+          Not only is the code example highly brittle, but it also is too generic and reads poorly. Opt instead to utilize existing vocabulary, specifically tag names, where it makes sense.
+        </p>
+      </article>
+      <article>
+        <h3>Naming</h3>
+        <p>
+          Names should be descriptive and should use dashes to seperate words, not camelCase. Names should be descriptive without being overly verbose.
+        </p>
+          <pre><code class="sass">.some-class {
+              value: $my-variable;
+          }</code></pre>
+
+          <p>As an example, take a look at the rule for small buttons in _buttons.sizes.scss</p>
+          <pre><code class="sass">
+            &.size-sm {
+              @extend .font-xs;
+              min-height:$button-height-sm;
+              padding-left:7px;
+              padding-right:7px;
+
+              @include phone-button-height($phone-tap-height - 10);
+            }
+          </code></pre>
+        </p>
+        <p>
+          Variable names should include category to make it easier to find them later and to clarify variable type and usage. All global colors are prefixed with $color.
+          <code><pre class="sass">
+            $color-primary: 			   #008ab0;
+          </pre></code>
+        </p>
+      </article>
+      <article>
+        <h3>Rule Order & Nesting</h3>
+        <p>
+          To help with readability and consistency keep the following order when writing your scss:
+          <ol>
+            <li>@extends</li>
+            <li>@includes</li>
+            <li>Properties</li>
+            <li>States/Variants ('&' rules)</li>
+            <li>Nested elements</li>
+          </ol>
+        </p>
+        <p>
+          In this way, someone who is reading your code can easily determine what the styling is of the element itself without having to scan the entire rule.
+        </p>
+        <p>
+          To limit complexity, it may be useful sometimes to break up your rule into parts for readability. As rules get longer they become difficult to keep track of.
+        </p>
+      </article>
+    </section>
+    <section>
+      <h2><a name="typography">Typography</a></h2>
+      <article>
+        <h3>Headers</h3>
+        <article>
+          <h1>h1</h1>
+          <h2>h2</h2>
+          <h3>h3</h3>
+          <h4>h4</h4>
+          <h5>h5</h5>
+          <h6>h6</h6>
+        </article>
+      </article>
+    </section>
+    <section>
+      <h2><a name="buttons">Buttons</a></h2>
+      <article>
+        <h3>Basic Buttons</h3>
+        <div class="grouped">
+          <button class="btn">Default</button>
+          <button class="btn btn-secondary">Secondary</button>
+          <button class="btn btn-filled">Filled</button>
+          <button class="btn btn-primary phone-width-full">Primary</button>
+        </div>
+        <div class="grouped">
+          <button class="btn btn-primary"><i class="fa fa-check"></i>
+            <span>Done</span>
+          </button>
+          <button class="btn btn-delete"><i class="fa fa-trash"></i>
+            <span>Delete</span>
+          </button>
+        </div>
+        <a class="btn">Link</a>
+        <button class="btn btn-icon"><i class="fa fa-cloud"></i>
+        </button>
+        <i class="btn fa fa-star"></i>
+      </article>
+      <article>
+        <h3>Underline Buttons</h3>
+        <div class="underlined tabs">
+          <button class="btn btn-underline">Some link</button>
+          <button class="btn btn-underline active">Link 2</button>
+          <button class="btn btn-underline">Link 3</button>
+        </div>
+      </article>
+      <article>
+        <h3>Disabled Buttons</h3>
+        <div class="grouped">
+          <button class="btn" disabled>Default</button>
+          <button class="btn btn-secondary" disabled>Secondary</button>
+          <button class="btn btn-filled" disabled>Filled</button>
+          <button class="btn btn-primary phone-width-full" disabled>Primary</button>
+        </div>
+        <div class="grouped">
+          <button class="btn btn-primary" disabled><i class="fa fa-check"></i>
+            <span>Done</span>
+          </button>
+          <button class="btn btn-delete" disabled><i class="fa fa-trash"></i>
+            <span>Delete</span>
+          </button>
+        </div>
+        <a class="btn" disabled>Link</a>
+        <button class="btn btn-icon" disabled><i class="fa fa-cloud"></i>
+        </button>
+        <i class="btn fa fa-star" disabled></i>
+      </article>
+      <article>
+        <h3>Button Groups (compound-element)</h3>
+        <div class="compound-element">
+          <button class="btn">A</button>
+          <button class="btn">B</button>
+          <button class="btn">C</button>
+          <button class="btn">D</button>
+          <button class="btn"><i class="fa fa-star"></i>
+          </button>
+        </div>
+      </article>
+      <article>
+        <h3>Button sizes</h3>
+        <button class="btn btn-default size-sm">Small</button>
+        <button class="btn btn-default">Default</button>
+        <button class="btn btn-default size-lg">Large</button>
+      </article>
+    </section>
+    <section>
+      <h2><a name="forms">Forms</a></h2>
+      <article>
+        <h3>Field with label</h3>
+        <fieldset class="form-inline">
+          <label>Inline Label</label>
+          <input>
+        </fieldset>
+        <fieldset>
+          <label class="above">Label Above</label>
+          <input>
+        </fieldset>
+        <fieldset required>
+          <label class="above" for="requiredField">Required field</label>
+          <input name="requiredField">
+        </fieldset>
+      </article>
+      <article>
+        <h3>Field with warning or error</h3>
+        <fieldset class="form-inline warning">
+          <label for="errorInline">Inline Label</label>
+          <input name="errorInline">
+          <label class="warning" for="errorInline">This doesn't look quite right</label>
+        </fieldset>
+        <fieldset class="error">
+          <label class="above" for="errorAbove">Label Above</label>
+          <input name="errorAbove">
+          <label class="error" for="errorAbove">Invalid entry</label>
+        </fieldset>
+        <fieldset required class="error">
+          <label class="above" for="errorAbove">Label Above</label>
+          <input name="errorAbove">
+          <label class="error" for="errorAbove">Invalid entry</label>
+        </fieldset>
+        <fieldset class="error">
+          <label class="above" for="errorSelect">Select Error</label>
+          <select name="errorSelect">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+          </select>
+          <label class="error" for="errorAbove">Invalid selection</label>
+        </fieldset>
+      </article>
+      <article>
+        <h3>Full fill form</h3>
+        <form class="fill-space labels-align-right">
+          <fieldset>
+            <label>A shorter label</label>
+            <input>
+            <i class="circle-error"></i>
+          </fieldset>
+          <fieldset>
+            <label>A much longer sort of label</label>
+            <input>
+          </fieldset>
+          <fieldset>
+            <label>A field with an error</label>
+            <input>
+            <label class="error">This field is invalid</label>
+          </fieldset>
+          <fieldset>
+            <label>A textarea</label>
+            <textarea></textarea>
+          </fieldset>
+          <fieldset>
+            <label>A Select</label>
+            <select class="btn">
+              <option>Apple</option>
+              <option>Orange</option>
+              <option>Grapes</option>
+            </select>
+          </fieldset>
+        </form>
+      </article>
+      <article>
+        <h3>Input with icon</h3>
+        <fieldset class="compound-element">
+          <i class="fa fa-search btn btn-embedded"></i><input>
+        </fieldset>
+      </article>
+      <article>
+        <h3>Compound Elements</h3>
+        <div class="compound-element">
+          <input/>
+          <button class="btn">Search</button>
+        </div>
+        <div class="compound-element">
+          <input><i class="fa fa-close btn btn-embedded"></i>
+        </div>
+        <div class="compound-element">
+          <select class="btn-secondary">
+            <option>Option A</option>
+            <option>Option B</option>
+            <option>Option C</option>
+            <option>Option D</option>
+          </select>
+          <button class="btn btn-primary">Select</button>
+        </div>
+      </article>
+      <article>
+        <h3>Text area</h3>
+        <textarea></textarea>
+      </article>
+      <article>
+        <h3>Mixed-Type (compound-element)</h3>
+        <div class="compound-element">
+          <select class="btn">
+            <option>Apple</option>
+            <option>Orange</option>
+            <option>Grapes</option>
+          </select>
+          <button class="btn">Submit</button>
+        </div>
+        <div class="compound-element">
+          <button class="btn">A</button>
+          <input></input>
+          <select class="btn">
+            <option>Apple</option>
+            <option>Orange</option>
+            <option>Grapes</option>
+          </select>
+        </div>
+      </article>
+    </section>
+    <section>
+      <h2><a name="layout">Layout</a></h2>
+      <article>
+        <h3>Cards</h3>
+          <header class="card-controls">
+            <h2>Card Title</h2>
+            <span class="primary-action labeled-action action">
+              <label>Edit</label>
+              <i class="fa fa-pencil"></i>
+            </span>
+          </header>
+          <div class="ns-card">
+            Some content
+          </div>
+      </article>
+      <article>
+        <h2>Tables</h2>
+        <div class="ns-card scorecard">
+      		<table class="bordered-horizontal ns-table">
+      			<thead>
+      				<tr>
+                <th></th>
+      					<th>Actual</th>
+                <th>Current Month Goal</th>
+                <th>Final Goal</th>
+                <th>Goal Month</th>
+                <th>% Completed</th>
+      				</tr>
+      			</thead>
+      			<tbody>
+              <tr>
+                <td>Total Breakaway Volume</td>
+                <td>750,288.34</td>
+                <td>775000.00</td>
+                <td>900,000</td>
+                <td>12/2014</td>
+                <td>83%</td>
+              </tr>
+              <span>
+              <tr>
+                <td>Total Activites</td>
+                <td>750,288.34</td>
+                <td>775000.00</td>
+                <td>900,000</td>
+                <td>12/2014</td>
+                <td>83%</td>
+              </tr>
+              <tr>
+                <td>Passed LOIs</td>
+                <td>750,288.34</td>
+                <td>775000.00</td>
+                <td>900,000</td>
+                <td>12/2014</td>
+                <td>83%</td>
+              </tr>
+            </span>
+      			</tbody>
+      		</table>
+        </div>
+      </article>
+      <article>
+        <h2>Tree-Graph, Striped, Tables</h2>
+        <div class="ns-card scorecard no-padding">
+      		<table class="ns-table bordered striped">
+      			<thead>
+              <th></th>
+    					<th>Actual</th>
+              <th>Current Month Goal</th>
+              <th>Final Goal</th>
+              <th>Goal Month</th>
+              <th>% Completed</th>
+      			</thead>
+      			<tbody>
+              <tr>
+                <td>Total Breakaway Volume</td>
+                <td>750,288.34</td>
+                <td>775000.00</td>
+                <td>900,000</td>
+                <td>12/2014</td>
+                <td>83%</td>
+              </tr>
+              <span>
+              <tr>
+                <td>Total Activites</td>
+                <td>750,288.34</td>
+                <td>775000.00</td>
+                <td>900,000</td>
+                <td>12/2014</td>
+                <td>83%</td>
+              </tr>
+              <tr>
+                <td>Passed LOIs</td>
+                <td>750,288.34</td>
+                <td>775000.00</td>
+                <td>900,000</td>
+                <td>12/2014</td>
+                <td>83%</td>
+              </tr>
+            </span>
+      			</tbody>
+      		</table>
+        </div>
+      </article>
+      <article>
+        <h2>Selectable Rows</h2>
+        <div class="ns-card scorecard no-padding">
+      		<table class="ns-table bordered striped selectable-rows">
+      			<thead>
+              <th></th>
+    					<th>Actual</th>
+              <th>Current Month Goal</th>
+              <th>Final Goal</th>
+              <th>Goal Month</th>
+              <th>% Completed</th>
+      			</thead>
+      			<tbody>
+              <tr>
+                <td>Total Breakaway Volume</td>
+                <td>750,288.34</td>
+                <td>775000.00</td>
+                <td>900,000</td>
+                <td>12/2014</td>
+                <td>83%</td>
+              </tr>
+              <span>
+              <tr>
+                <td>Total Activites</td>
+                <td>750,288.34</td>
+                <td>775000.00</td>
+                <td>900,000</td>
+                <td>12/2014</td>
+                <td>83%</td>
+              </tr>
+              <tr selected>
+                <td>Passed LOIs</td>
+                <td>750,288.34</td>
+                <td>775000.00</td>
+                <td>900,000</td>
+                <td>12/2014</td>
+                <td>83%</td>
+              </tr>
+              <tr>
+                <td>Total Activites</td>
+                <td>750,288.34</td>
+                <td>775000.00</td>
+                <td>900,000</td>
+                <td>12/2014</td>
+                <td>83%</td>
+              </tr>
+              <tr>
+                <td>Passed LOIs</td>
+                <td>750,288.34</td>
+                <td>775000.00</td>
+                <td>900,000</td>
+                <td>12/2014</td>
+                <td>83%</td>
+              </tr>
+            </span>
+      			</tbody>
+      		</table>
+        </div>
+      </article>
+      <article>
+        <h2>Collections</h2>
+        <div class="ns-card">
+          <ul class="collection">
+            <li>
+              <input type="checkbox">
+              <span>Contact 2 new people each day. (by August 2014)</span>
+            </li>
+            <li>
+              <input type="checkbox">
+              <span>Contact 2 new people each day. (by August 2014)</span>
+            </li>
+          </ul>
+        </div>
+      </article>
+      <article>
+        <h2>Collections with Grouping</h2>
+        <div class="ns-card no-padding">
+          <ul class="collection">
+            <li class="collection">
+              <header>
+                My Header
+              </header>
+              <ul>
+                <li>Something</li>
+                <li>Something else</li>
+              </ul>
+            </li>
+            <li class="collection">
+              <header>
+                My Header
+              </header>
+              <ul>
+                <li>Something</li>
+                <li>Something else</li>
+              </ul>
+            </li>
+            <li class="summary">
+              <label>31 Items</label>
+              <button class="btn btn-unfilled action">View Full List</button>
+            </li>
+          </ul>
+        </div>
+
+      </article>
+      <article>
+        <h3>Absolute Placeholders</h3>
+        <p>
+          A placeholder that takes up space to allow an element to still be "part of" a container (e.g. affect its size) while also positioning the element releative to the container.
+        </p>
+        <div style="position:relative;border:solid 1px gray;padding:1em;">
+          <h3>Some Container</h3>
+          <button class="btn btn-default anchor-to-bottom anchor-to-right">Button text</button>
+          <button class="btn btn-default absolute-placeholder" disabled>Button text</button>
+        </div>
+        <span>Some text that follows the container. If this is working as it should, then the button should be inside the above container and not overlapping any other elements.</span>
+      </article>
+      <article>
+        <h3>Grid</h3>
+        <p>
+          NS Atomic uses Zurb Foundation's <a href="http://foundation.zurb.com/grid.html">Grid</a> framework. In order to prevent some of the broader styling from bleeding out into other parts of the code, all of Zurb's functionality is scoped within the .grid class. So any time you want to utilize the grid it must be applied either to the row element, or to an ancestor.
+        </p>
+      </article>
+      <article>
+      <h3>Modals</h3>
+      <script>
+        function showModal() {
+          var el = document.getElementById("modalScrim");
+          el.style.display = "block";
+        }
+
+        function hideModal() {
+          var el = document.getElementById("modalScrim");
+          el.style.display = "none";
+        }
+      </script>
+      <button id="showModalButton" onclick="showModal()">Show Modal</button>
+
+      <div>
+        <div id="modalScrim" class="scrim" style="display:none;">
+            <aside class="modal">
+              <header>
+                ADR Timing
+                <i class="btn fa fa-close anchor-to-top anchor-to-right" onclick="hideModal()"></i>
+              </header>
+            <div>
+  							<input name="radios" type="radio"><label>Option A</label>
+  							<input name="radios" type="radio"><label>Option b</label>
+  						</div>
+              <div>
+                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in justo non turpis vulputate semper. Donec venenatis sapien id libero maximus pharetra. Suspendisse vestibulum sapien eu semper pharetra. Suspendisse laoreet risus ac diam aliquet,
+                  et congue mauris euismod. Sed nec tempus tortor. Aenean congue ante eget pulvinar eleifend. Fusce porttitor sem a vehicula consequat. Praesent dui lacus, porttitor et metus ut, mollis accumsan neque. Nulla sed nibh sed mi vulputate posuere
+                  at et nunc. Pellentesque euismod lectus nec arcu gravida efficitur. Ut mattis, quam non luctus euismod, massa diam consequat urna, nec blandit lacus sapien a urna. Aliquam sollicitudin rhoncus nulla, a pellentesque lorem consectetur sed.
+                  Curabitur fringilla finibus orci ut luctus. Curabitur iaculis nibh at turpis venenatis imperdiet. Curabitur egestas vehicula auctor.</p>
+                <p>Cras id feugiat lacus, sit amet molestie arcu. Nunc lacus odio, efficitur id magna eget, convallis aliquet orci. Vivamus mollis ante non tempus condimentum. Suspendisse eget suscipit nulla, luctus dignissim ipsum. Pellentesque habitant morbi
+                  tristique senectus et netus et malesuada fames ac turpis egestas. In hac habitasse platea dictumst. Nunc quis elit vel lorem consequat pulvinar. Phasellus nec neque sed elit interdum scelerisque quis non mauris. Suspendisse urna augue,
+                  feugiat eu ultricies at, interdum quis lorem. Duis velit felis, scelerisque eget tincidunt sed, dapibus nec tortor. Cras vel risus arcu.</p>
+              </div>
+              <footer>
+                <button class="btn btn-secondary">Cancel</button>
+                <button class="btn btn-primary">Apply</button>
+              </footer>
+            </aside>
+        </div>
+      </div>
+    </article>
+      <article>
+        <h3>Anchor To</h3>
+        <p>A simple way to position an element relative to an edge of its container</p>
+
+      </article>
+    </section>
+    <section>
+      <h2><a name="customization">Customization</a></h2>
+      <p>
+        NS-Atomic is highly customizable, allowing you to customize everything from the fonts and colors to mobile breakpoints and button styling. These thigns can all be changed without modifying any of core files.
+      </p>
+      <article>
+        <h3></h3>
+      </article>
+      <article>
+        <h3>How to Customize</h3>
+        <p>
+          There are two ways to customize. The preferred way to customize is to change variable values in <b>sites/my-app/config.scss</b>. You can see all the global variables in default-config.scss.
+        </p>
+        <p>
+          If you need to make larger changes or overrides that apply only to your app, you will need to make the changes in your <b>overrides.scss</b> file. Use discretion when overriding the global styles.
+        </p>
+      </article>
+      <article>
+        <h3>Compilation</h3>
+        <p>
+          When you create your own variant of the atomic styles, you will need to run the compilation yourself. This can be done with <a href="http://compass-style.org/">Compass</a>, but may have a smoother process in the future.
+        </p>
+      </article>
+      <article>
+        <h3>Changing Colors</h3>
+        <p>
+          Most of the basic colors can be overriden. More colors will be added in the future. NS-Atomic simplifies things for you by computing variants automatically from base colors. If you want to change the primary (brand) color, for example, its as easy as this:
+          <code><pre class="scss">
+            $color-primary: green;
+          </pre></code>
+        </p>
+      </article>
+      <article>
+        <h3>Scoping NS-Atomic</h3>
+        <p>The global styles can be scoped using the .ns-atomic class, so only items with an ancestor of '.ns-atomic' will actually have the styles applied. Scoping is currently being used in the AEM project to aid the transition to using global styles and prevent the styles from affecting areas until we're ready to apply them.
+        </p>
+        <code><pre class="scss">
+          $global-use-namespace: true;
+        </pre></code>
+        <p>
+        Typically you should just apply ns-atomic to your body tag, unless you have a good reason for wanting to limit the global styles on a particular page.
+        </p>
+      </article>
+
+    </section>
+  </div>
+</body>
+
+</html>

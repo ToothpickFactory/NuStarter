@@ -1,0 +1,25 @@
+{
+  "name": "vgclient",
+  "version": "0.0.0",
+  "description": "Tool to optimze VGClient code for post development",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Austin Lovell",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "~3.9.0",
+    "gulp-concat": "~2.6.0",
+    "gulp-inject": "~1.5.0",
+    "gulp-angular-templatecache": "~1.7.0",
+    "run-sequence": "~1.1.2",
+    "gulp-uglify": "~1.2.0",
+    "stream-series": "~0.1.1",
+    "gulp-watch": "~4.3.4"
+  }
+}
